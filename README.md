@@ -17,27 +17,10 @@ urlFragment: openai-chat-vision-quickstart
 -->
 # Chat + Vision using Azure OpenAI (Python)
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/openai-chat-vision-quickstart)
-[![Open in Dev Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/openai-chat-vision-quickstart)
+This is an Python app using Azure OpenAI vision capabilities to chat with uploaded images. This is a personal repo for the app I use to transcribe handwritten notes. If you want to build an app like this, start from the azd template: [Multimodal GenAI experience: Q&A on uploaded images](https://azure.github.io/ai-app-templates/repo/azure-samples/openai-chat-vision-quickstart/) created by Pamela Fox.
 
-This repository includes a Python app that uses Azure OpenAI to generate responses to user messages and uploaded images.
 
-The project includes all the infrastructure and configuration needed to provision Azure OpenAI resources and deploy the app to [Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview) using the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview). By default, the app will use managed identity to authenticate with Azure OpenAI, and it will deploy a GPT-4o model with the GlobalStandard SKU.
-
-We recommend first going through the [deploying steps](#deploying) before running this app locally,
-since the local app needs credentials for Azure OpenAI to work properly.
-
-* [Features](#features)
-* [Architecture diagram](#architecture-diagram)
-* [Getting started](#getting-started)
-  * [GitHub Codespaces](#github-codespaces)
-  * [VS Code Dev Containers](#vs-code-dev-containers)
-  * [Local environment](#local-environment)
-* [Deploying](#deploying)
-* [Development server](#development-server)
-* [Costs](#costs)
-* [Security guidelines](#security-guidelines)
-* [Resources](#resources)
+The template includes all the infrastructure and configuration needed to provision Azure OpenAI resources and deploy the app to [Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview) using the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview). By default, the app will use managed identity to authenticate with Azure OpenAI, and it will deploy a GPT-4o model with the GlobalStandard SKU.
 
 ## Features
 
@@ -55,75 +38,8 @@ since the local app needs credentials for Azure OpenAI to work properly.
 
 ## Getting started
 
-You have a few options for getting started with this template.
-The quickest way to get started is GitHub Codespaces, since it will setup all the tools for you, but you can also [set it up locally](#local-environment).
+Check out the template [here](https://azure.github.io/ai-app-templates/repo/azure-samples/openai-chat-vision-quickstart/)
 
-### GitHub Codespaces
-
-You can run this template virtually by using GitHub Codespaces. The button will open a web-based VS Code instance in your browser:
-
-1. Open the template (this may take several minutes):
-
-    [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/openai-chat-vision-quickstart)
-
-2. Open a terminal window
-3. Continue with the [deploying steps](#deploying)
-
-### VS Code Dev Containers
-
-A related option is VS Code Dev Containers, which will open the project in your local VS Code using the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers):
-
-1. Start Docker Desktop (install it if not already installed)
-2. Open the project:
-
-    [![Open in Dev Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/openai-chat-vision-quickstart)
-
-3. In the VS Code window that opens, once the project files show up (this may take several minutes), open a terminal window.
-4. Continue with the [deploying steps](#deploying)
-
-### Local environment
-
-If you're not using one of the above options for opening the project, then you'll need to:
-
-1. Make sure the following tools are installed:
-
-    * [Azure Developer CLI (azd)](https://aka.ms/install-azd)
-    * [Python 3.10+](https://www.python.org/downloads/)
-    * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-    * [Git](https://git-scm.com/downloads)
-
-2. Download the project code:
-
-    ```shell
-    azd init -t openai-chat-vision-quickstart
-    ```
-
-3. Open the project folder
-4. Create a [Python virtual environment](https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments) and activate it.
-5. Install required Python packages:
-
-    ```shell
-    pip install -r requirements-dev.txt
-    ```
-
-6. Install the app as an editable package:
-
-    ```shell
-    python -m pip install -e src
-    ```
-
-7. Continue with the [deploying steps](#deploying).
-
-## Deploying
-
-Once you've opened the project in [Codespaces](#github-codespaces), in [Dev Containers](#vs-code-dev-containers), or [locally](#local-environment), you can deploy it to Azure.
-
-### Azure account setup
-
-1. Sign up for a [free Azure account](https://azure.microsoft.com/free/) and create an Azure Subscription.
-2. Check that you have the necessary permissions:
-    * Your Azure account must have `Microsoft.Authorization/roleAssignments/write` permissions, such as [Role Based Access Control Administrator](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#role-based-access-control-administrator-preview), [User Access Administrator](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator), or [Owner](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#owner). If you don't have subscription-level permissions, you must be granted [RBAC](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#role-based-access-control-administrator-preview) for an existing resource group and [deploy to that existing group](/docs/deploy_existing.md#resource-group).
-    * Your Azure account also needs `Microsoft.Resources/deployments/write` permissions on the subscription level.
 
 ### Deploying with azd
 
